@@ -25,34 +25,3 @@ void matAddcpp(const vfloat2 &a, const vfloat2 &b, vfloat2 &c) {
   }
 }
 
-/*int main()
-{
-
-  int n1 = 10;
-  int n2 = 11;
-
-  vfloat1 a1(n1,0);
-  
-  vfloat2 a2(n2,a1);
-  vfloat2 b2(a2);
-  vfloat2 c2(a2);
-
-  for (int i1=0; i1<n1; ++i1) {
-    for (int i2=0; i2<n2; ++i2) {
-      a2[i1][i2] = i1;
-      b2[i1][i2] = i2;
-    }
-  }
-
-
-  matAddcpp(a2,b2,c2);
-
-  for (int i1=0; i1<n1; ++i1) {
-    for (int i2=0; i2<n2; ++i2) {
-      cout << c2[i1][i2] << " ";
-    }
-    cout << "  " << c2[i1].size() << endl;
-  }
-
-  return 0;
-}*/
