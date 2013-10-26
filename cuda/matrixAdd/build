@@ -1,0 +1,3 @@
+#! /bin/bash
+
+nvcc -o matAdd matAddbench.cu matAddcpp.cpp matAddcuda.cu Stopwatch.cpp
