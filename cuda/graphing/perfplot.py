@@ -9,14 +9,28 @@ import numpy as np
 
 # X -> number of iterations; Y -> array size
 with open('test.txt') as f:
-  Xbeg, Xend, Xstep = [int(x) for x in f.readline().split()] # read first line
-  Ybeg, Yend, Ystep = [int(x) for x in f.readline().split()] # read second line
+  Xlog, Ylog = [int(x) for x in f.readline().split()] # first line
+  Xbeg, Xend, Xstep, Xlen = [int(x) for x in f.readline().split()] # second line
+  Ybeg, Yend, Ystep, Ylen = [int(x) for x in f.readline().split()] # third line
   flops = []
   for line in f: # read rest of lines
     flops.append([int(x) for x in line.split()])
 
-X = np.arange(Xbeg, Xend+1, Xstep)
-Y = np.arange(Ybeg, Yend+1, Ystep)
+if (Xlog):
+  X = np.zeros(Xlen)
+  X[0] = Xbeg
+  for i in range(1,Xlen):
+    X[i] = X[i-1]*Xstep
+else:
+  X = np.arange(Xbeg, Xend+1, Xstep)
+if (Ylog):
+  Y = np.zeros(Xlen)
+  Y[0] = Ybeg
+  for i in range(1,Ylen):
+    Y[i] = Y[i-1]*Ystep
+  print Y
+else:
+  Y = np.arange(Ybeg, Yend+1, Ystep)
 X, Y = np.meshgrid(X, Y)
 
 # Z -> number of flops
@@ -28,7 +42,6 @@ for i in xrange(len(X)):
     #Z[i].append(1)
     Z[i] = Z[i] + flops[k]
     k += 1
-print Z
 
 fig = plt.figure()
 ax = fig.gca(projection='3d')
